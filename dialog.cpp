@@ -13,8 +13,8 @@ using namespace std;
 #include <sstream>
 //########################################################################################################
 /// переменные:
-std::vector<unsigned long long> list_of_synapses={} ;
-std::vector<unsigned long long> list_of_neurons={};//[201] ;//={};
+std::vector<long long> list_of_synapses={} ;
+std::vector<long long> list_of_neurons={};//[201] ;//={};
 long long variable_error;
 QString  Nazvaniye_fayla_s_neyronami_i_signalom="";
 bool Odin_Uchitelia;
@@ -46,7 +46,7 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
 
     std::string line;
     while (std::getline(file, line)) {
-        unsigned long long value;
+         long long value;
         std::istringstream iss(line);
         if (!(iss >> value)) {
             // handle error
@@ -66,7 +66,7 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
     while (!in.atEnd()) {
         QString line = in.readLine();
         bool ok;
-        unsigned long long synaps = line.toULongLong(&ok);
+         long long synaps = line.toLongLong(&ok);
         if (!ok) {
             throw std::runtime_error("Invalid synaps value in file");
         }
@@ -82,8 +82,15 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
         for (int neuron_index = 0, synapse_index = 0;   neuron_index < 200, synapse_index < 10100;   ++neuron_index, synapse_index = synapse_index + 100)
 
         {
-           
-           list_of_neurons[var]=list_of_neurons[var]-  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -
+         //  if(list_of_synapses[synapse_index]!=0)
+        // if (list_of_neurons[var]!=0)
+       // if ( synapse_index < 10100 )
+//       std::cout << "list_of_neurons[var]= "<<list_of_neurons[var]<< std::endl; 
+//       std::cout << "list_of_neurons[neuron_index]= "<<list_of_neurons[neuron_index]<< std::endl; 
+//       std::cout << "list_of_synapses[synapse_index]= "<<list_of_synapses[synapse_index]<< std::endl;    
+           list_of_neurons[var]=list_of_neurons[var]+  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); 
+         //  std::cout << "list_of_neurons[var]= "<<list_of_neurons[var]<< std::endl;    
+           // + на -
 //           std::for_each(list_of_neurons[var].begin(), list_of_neurons[var].end(),
 //              [&, neuron_index, synapse_index](unsigned long long& elem) {
 //                  elem -= list_of_neurons[neuron_index][elem] / list_of_synapses[synapse_index];
@@ -93,7 +100,10 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
 //########################################################################################################
     for (int   neuron_index = 100, synapse_index = 10000; neuron_index < 200;   ++neuron_index, ++synapse_index)
     {
-   list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
+   //  if(list_of_synapses[synapse_index]!=0)
+   // if (list_of_neurons[var]!=0)
+  // if ( synapse_index < 10100 )
+   list_of_neurons[200] = list_of_neurons[200] + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
 
     }
 //########################################################################################################    
@@ -103,13 +113,14 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
 //                                            return sum + (neuron / list_of_synapses[++synapse_index]);
 //                                        });    
 //######################################################################################################## 
-    variable_error     =   1073741824-list_of_neurons[200] ;
+  //  variable_error     =   1073741824-list_of_neurons[200] ;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   std::cout << "variable_error = "<< variable_error<< std::endl;
+  // std::cout << "variable_error = "<< variable_error<< std::endl;
 //########################################################################################################
 /////////////   показываем что определила программа
     if 
-        ( variable_error <=0)
+      //  ( variable_error <=0)
+        (list_of_neurons[200]<0)
 
     {
         ui->label->setText(Nazvaniye_fayla_s_neyronami_i_signalom+"\n"+"Программа считает что это 1.");
@@ -122,10 +133,10 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
 //########################################################################################################
 Odin_Uchitelia=false;  ui->label_2->setText ("Odin_Programmi==true; Odin_Uchitelia=false");
         // bez_1
-        QProcess::startDetached(
+//        QProcess::startDetached(
 
-           "/home/viktor/my_projects_qt_2_build/build-bez_1_GUI-Desktop_Qt_5_12_12_GCC_64bit-Debug/bez_1_GUI"
-            , qApp->arguments());  
+//           "/home/viktor/my_projects_qt_2_build/build-bez_1_GUI-Desktop_Qt_5_12_12_GCC_64bit-Debug/bez_1_GUI"
+//            , qApp->arguments());  
 //########################################################################################################
 
               
