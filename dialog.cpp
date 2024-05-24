@@ -150,6 +150,28 @@ Dialog::~Dialog()
 
 void Dialog::on_pushButton_clicked()
 {
-    
+ // выбор программы обучения:
+    if ( Odin_Programmi==false) // Если не распознана 1:
+    {
+        Odin_Uchitelia=true; ui->label_2->setText ("Odin_Programmi==false; Odin_Uchitelia=true");
+        // cycle_of_distinguishing_a_one_with_vectors_GUI
+        QProcess::startDetached(
+          
+"/home/viktor/my_projects_qt_2_build/build-cycle_of_distinguishing_a_one_with_vectors_GUI_2-Desktop_Qt_5_12_12_GCC_64bit-Debug/cycle_of_distinguishing_a_one_with_vectors_GUI_2"
+                                , qApp->arguments());  
+//   qApp->quit();
+    }
+    else // Если не распознана не 1:
+    {
+        Odin_Uchitelia=false;  ui->label_2->setText ("Odin_Programmi==true; Odin_Uchitelia=false");
+        // bez_1
+        QProcess::startDetached(
+
+           "/home/viktor/my_projects_qt_2_build/build-bez_1_GUI_3-Desktop_Qt_5_12_12_GCC_64bit-Release/bez_1_GUI_3"
+            , qApp->arguments());  
+ //          qApp->quit();
+    }
+    //        Odin_Programmi==false;
+    // если одно сочетание запускаем одну программу, если другое - другую   
 }
 
