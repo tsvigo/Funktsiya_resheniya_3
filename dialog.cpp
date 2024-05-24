@@ -131,7 +131,7 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
           Odin_Programmi=false;
     }
 //########################################################################################################
-Odin_Uchitelia=false;  ui->label_2->setText ("Odin_Programmi==true; Odin_Uchitelia=false");
+//Odin_Uchitelia=false;  ui->label_2->setText ("Odin_Programmi==true; Odin_Uchitelia=false");
         // bez_1
 //        QProcess::startDetached(
 
@@ -145,5 +145,11 @@ Odin_Uchitelia=false;  ui->label_2->setText ("Odin_Programmi==true; Odin_Uchitel
 Dialog::~Dialog()
 {
     delete ui;
+}
+
+
+void Dialog::on_pushButton_clicked()
+{
+    
 }
 
