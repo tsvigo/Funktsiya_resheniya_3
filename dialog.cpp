@@ -34,7 +34,7 @@ Dialog::Dialog(QWidget *parent)
    if (Nazvaniye_fayla_s_neyronami_i_signalom=="")
    {
 Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
-              tr("Open txt"), "/home/viktor/my_projects_qt_2/Sgenerirovannye_fayly/peyzaji_2/", tr("Txt Files (*.txt)"));
+              tr("Open txt"), "/home/viktor/my_projects_qt_2/Sgenerirovannye_fayly/", tr("Txt Files (*.txt)"));
    }           
 //########################################################################################################
 // читаем нейроны в вектор
@@ -63,7 +63,7 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
     }
 
     QTextStream in(&file2);
-    while (!in.atEnd()) {
+    while (!in.atEnd()-1) {//-1
         QString line = in.readLine();
         bool ok;
          long long synaps = line.toLongLong(&ok);
@@ -82,18 +82,12 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
         for (int neuron_index = 0, synapse_index = 0;   neuron_index < 200, synapse_index < 10100;   ++neuron_index, synapse_index = synapse_index + 100)
 
         {
-         //  if(list_of_synapses[synapse_index]!=0)
-        // if (list_of_neurons[var]!=0)
-       // if ( synapse_index < 10100 )
-//       std::cout << "list_of_neurons[var]= "<<list_of_neurons[var]<< std::endl; 
-//       std::cout << "list_of_neurons[neuron_index]= "<<list_of_neurons[neuron_index]<< std::endl; 
-//       std::cout << "list_of_synapses[synapse_index]= "<<list_of_synapses[synapse_index]<< std::endl;    
+
+
+//Segmentation fault
+if (list_of_neurons[var]<9223372036854775806 && list_of_neurons[var]>-9223372036854775807)
            list_of_neurons[var]=list_of_neurons[var]+  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); 
-         //  std::cout << "list_of_neurons[var]= "<<list_of_neurons[var]<< std::endl;    
-           // + на -
-//           std::for_each(list_of_neurons[var].begin(), list_of_neurons[var].end(),
-//              [&, neuron_index, synapse_index](unsigned long long& elem) {
-//                  elem -= list_of_neurons[neuron_index][elem] / list_of_synapses[synapse_index];
+
 //              });
         } // вычитаем нейроны
     }
