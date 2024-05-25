@@ -12,6 +12,7 @@ using namespace std;
 #include <string>
 #include <sstream>
 #include <memory> // Включение заголовочного файла для std::unique_ptr
+#include <cstdlib>
 //########################################################################################################
 /// переменные:
 std::vector<long long> list_of_synapses={} ;
@@ -69,7 +70,7 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
     }
     file.close();
 //########################################################################################################              
-///#################### считываем синасы из файла в вектор #########################################################
+///#################### считываем синапсы из файла в вектор #########################################################
     QFile file2(  "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt");
     if (!file2.open(QFile::ReadOnly | QFile::Text)) {
         throw std::runtime_error("Failed to open file");
