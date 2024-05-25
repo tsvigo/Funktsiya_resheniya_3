@@ -11,15 +11,28 @@ using namespace std;
 #include <vector>
 #include <string>
 #include <sstream>
+#include <memory> // Включение заголовочного файла для std::unique_ptr
 //########################################################################################################
 /// переменные:
 std::vector<long long> list_of_synapses={} ;
+ // Инициализация указателя на std::vector<long long>
+ //   std::vector<long long>* list_of_synapses = new std::vector<long long>;
 std::vector<long long> list_of_neurons={};//[201] ;//={};
 long long variable_error;
 QString  Nazvaniye_fayla_s_neyronami_i_signalom="";
 bool Odin_Uchitelia;
 bool Odin_Programmi;
 int var ;
+// Реализация make_unique для C++11
+//namespace std {
+//    template<typename T, typename... Args>
+//    std::unique_ptr<T> make_unique(Args&&... args) {
+//        return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+//    }
+//}
+
+ // Инициализация умного указателя на std::vector<long long> с использованием std::unique_ptr
+//    std::unique_ptr<std::vector<long long>> list_of_synapses = std::make_unique<std::vector<long long>>();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //########################################################################################################
 Dialog::Dialog(QWidget *parent)
