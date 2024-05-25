@@ -82,10 +82,13 @@ Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
         for (int neuron_index = 0, synapse_index = 0;   neuron_index < 200, synapse_index < 10100;   ++neuron_index, synapse_index = synapse_index + 100)
 
         {
-
-
+if(list_of_synapses[synapse_index]>=9223372036854775806 )
+ std::cout << "list_of_synapses[synapse_index]>=9223372036854775806"<< std::endl;  
 //Segmentation fault
-if (list_of_neurons[var]<9223372036854775806 && list_of_neurons[var]>-9223372036854775807)
+if (list_of_neurons[var]<9223372036854775806 && list_of_neurons[var]>-9223372036854775807 &&
+list_of_neurons[neuron_index]<9223372036854775806 && list_of_neurons[neuron_index]>-9223372036854775807
+&& list_of_synapses[synapse_index]<9223372036854775806 && list_of_synapses[synapse_index]>-9223372036854775807
+&& list_of_synapses[synapse_index]!=0 )
            list_of_neurons[var]=list_of_neurons[var]+  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); 
 
 //              });
